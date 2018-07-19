@@ -1,0 +1,5 @@
+﻿  Sphere.cpp
+d:\shagufta\opengl_workspace\sphearparentchild\sphearparentchild\sourcefiels\shapes\sphere.cpp(43): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+d:\shagufta\opengl_workspace\sphearparentchild\sphearparentchild\sourcefiels\shapes\sphere.cpp(47): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+d:\shagufta\opengl_workspace\sphearparentchild\sphearparentchild\sourcefiels\shapes\sphere.cpp(191): warning C4018: '<': signed/unsigned mismatch
+  SphearParentChild.vcxproj -> D:\Shagufta\OpenGL_Workspace\SphearParentChild\Debug\SphearParentChild.exe
