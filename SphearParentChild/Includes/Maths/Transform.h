@@ -19,9 +19,11 @@ public:
 	Vector3 scale;
 
 	void Rotate(Vector3 axis,float angle);
+	void Translate(Vector3 targetPos);
 
 	Matrix4 modelMatrix;
 	void SetModelMatrix();
+
 private:
 
 };

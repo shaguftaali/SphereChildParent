@@ -8,9 +8,9 @@ class Grid: public Object
 	
 	public:
 		//Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath);
-		Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3& a_position, const Vector3& rotation, const Vector3& scale);
-		Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3& a_position, const Vector3& rotation);
-		Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3& a_position);
+		Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3& a_position, const Vector3& rotation, const Vector3& scale, Node* a_parent);
+		Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3& a_position, const Vector3& rotation, Node* a_parent);
+		Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3& a_position, Node* a_parent);
 		void Render(const Camera& camera) override;
 	private:
 		float gridSize;

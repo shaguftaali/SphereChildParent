@@ -6,17 +6,18 @@
 #include "../Maths/Transform.h"
 #include "../Shader.h"
 #include "Camera.h"
+#include "Node.h"
 
-class Object
+class Object :public Node
 {
 public:
-	Object(const char * vertexPath, const char * fragmentPath);
-	Object(const char * vertexPath, const char * fragmentPath, const Vector3& position, const Vector3& rotation, const Vector3& scale );
-	Object(const char * vertexPath, const char * fragmentPath, const Vector3& position, const Vector3& rotation);
-	Object(const char * vertexPath, const char * fragmentPath, const Vector3& position);
+	Object(const char * vertexPath, const char * fragmentPath,Node* parent);
+	Object(const char * vertexPath, const char * fragmentPath, const Vector3& position, const Vector3& rotation, const Vector3& scale, Node* parent);
+	Object(const char * vertexPath, const char * fragmentPath, const Vector3& position, const Vector3& rotation, Node* parent);
+	Object(const char * vertexPath, const char * fragmentPath, const Vector3& position, Node* parent);
 	virtual void Render(const Camera& camera);
 	void DeleteDrawingData();
-	Transform transform;
+	//Transform transform;
 private:
 protected:
 	std::vector<float> vertices;

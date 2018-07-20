@@ -1,8 +1,8 @@
 #include "..\..\Includes\Shapes\Grid.h"
 
 
-Grid::Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3 & a_position, const Vector3 & a_rotation, const Vector3 & a_scale):
-	Object(vertexPath, fragmentPath,a_position,a_rotation,a_scale),
+Grid::Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3 & a_position, const Vector3 & a_rotation, const Vector3 & a_scale, Node* a_parent):
+	Object(vertexPath, fragmentPath,a_position,a_rotation,a_scale,a_parent),
 	gridSize(a_gridSize),
 	position(a_position)
 {
@@ -10,8 +10,8 @@ Grid::Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath,
 	SetDrawingData();
 }
 
-Grid::Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3 & a_position, const Vector3 & a_rotation):
-	Object(vertexPath, fragmentPath, a_position, a_rotation),
+Grid::Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3 & a_position, const Vector3 & a_rotation, Node* a_parent):
+	Object(vertexPath, fragmentPath, a_position, a_rotation,a_parent),
 	gridSize(a_gridSize),
 	position(a_position)
 
@@ -20,8 +20,8 @@ Grid::Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath,
 	SetDrawingData();
 }
 
-Grid::Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3 & a_position):
-	Object(vertexPath, fragmentPath),
+Grid::Grid(float a_gridSize, const char * vertexPath, const char * fragmentPath, const Vector3 & a_position, Node* a_parent):
+	Object(vertexPath, fragmentPath,a_parent),
 	gridSize(a_gridSize),
 	position(a_position)
 {

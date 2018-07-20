@@ -7,7 +7,7 @@ class Sphere :public Object
 {
 public:
 
-	Sphere(const char * vertexPath, const char * fragmentPath,Vector3 position,float m_radius,int a_totalSections);
+	Sphere(const char * vertexPath, const char * fragmentPath,Vector3 position,float m_radius,int a_totalSections,Node* a_parent);
 	//Sphere();
 	void Render(const Camera& camera) override;
 	//std::vector<float> vertices;

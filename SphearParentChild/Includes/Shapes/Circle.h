@@ -1,11 +1,11 @@
 #pragma once
 #include "../3D/Object.h"
 
-class Circle :Object
+class Circle :public Object
 {
 public:
 
-	Circle(const char * vertexPath, const char * fragmentPath, Vector3 position, float m_radius, int a_totalSections);
+	Circle(const char * vertexPath, const char * fragmentPath, Vector3 position, float m_radius, int a_totalSections, Node* a_parent);
 	//Sphere();
 	void Render(const Camera& camera) override;
 	//std::vector<float> vertices;

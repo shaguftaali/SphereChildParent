@@ -153,7 +153,8 @@ int main(int argc, char* argv[])
 	Grid grid(20,
 			  "D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/VertexShader.vs",
 			  "D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/FragmentShader.fs",
-			  Vector3(0,0,0)
+			  Vector3(0,0,0),
+			  nullptr
 			  );
 
 	/*Sphere sphere(
@@ -167,32 +168,59 @@ int main(int argc, char* argv[])
 	Sphere sphere(
 		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightVertexShader.vs",
 		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightFragmentShader.fs",
-		Vector3(0, 0, 0),
-		10,
-		30
+		Vector3(-2, 0, 0),
+		5,
+		30,
+		nullptr
+	);
+	Sphere sphere1(
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightVertexShader.vs",
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightFragmentShader.fs",
+		Vector3(6, 0, 0),
+		2,
+		30,
+		&sphere
+	);
+
+	Sphere sphere2(
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightVertexShader.vs",
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightFragmentShader.fs",
+		Vector3(6.5, 0, 0),
+		2,
+		30,
+		&sphere1
 	);
 
 	//sphere.transform.Rotate(Vector3(1,0,0),90);
-
-	Circle circle(
+	/*Circle circle(
 		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/VertexShader.vs",
 		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/FragmentShader.fs",
 		Vector3(0, 0, 0),
 		10,
-		24
-	);
-	
-	Camera camera(Vector3(0,0,-50), grid.transform.position, 500, .005f, 60);
+		24,
+		nullptr
+	);*/
 
+
+	
+
+	Vector3 v=grid.transform.position;
+	Camera camera(Vector3(0,0,-50), sphere.transform.position, 500, .005f, 60);
+	float angle=0;
 	while (!glfwWindowShouldClose(window))
 	{
 		processInput(window);
-
+		angle+=.1f/10.0f;
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		//grid.Render(camera);
 		sphere.Render(camera);
-
+		sphere1.Render(camera);
+		sphere2.Render(camera);
+		//sphere.transform.Rotate(Vector3(0, 1, 0), 0.2f);
+		sphere2.transform.Rotate(Vector3(0, 1, 0), 1);
+		//sphere1.transform.Translate(Vector3(0,cos(angle)*0.2f, 0));
+	//sphere2.transform.Translate(Vector3(0,sin(angle)*0.2f,0));
 		//circle.Render(camera);
 
 		glfwSwapBuffers(window);

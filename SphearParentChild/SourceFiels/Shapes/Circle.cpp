@@ -2,8 +2,8 @@
 
 #define PI 3.14
 
-Circle::Circle(const char * vertexPath, const char * fragmentPath, Vector3 a_position, float m_radius, int a_totalSections):
-	Object(vertexPath, fragmentPath, a_position),
+Circle::Circle(const char * vertexPath, const char * fragmentPath, Vector3 a_position, float m_radius, int a_totalSections, Node* a_parent):
+	Object(vertexPath, fragmentPath, a_position,a_parent),
 	radius(m_radius),
 	totalSections(a_totalSections)
 {

@@ -1,26 +1,27 @@
  #include "../../Includes/3D/Object.h"
 
 
-Object::Object(const char * vertexPath, const char * fragmentPath):
-	shader(vertexPath,fragmentPath)
+Object::Object(const char * vertexPath, const char * fragmentPath, Node* a_parent):
+	shader(vertexPath,fragmentPath),
+	Node(a_parent)
 {
 }
 
-Object::Object(const char * vertexPath, const char * fragmentPath, const Vector3 & position, const Vector3 & rotation, const Vector3 & scale):
+Object::Object(const char * vertexPath, const char * fragmentPath, const Vector3 & position, const Vector3 & rotation, const Vector3 & scale, Node* a_parent):
 shader(vertexPath,fragmentPath),
-transform(position,rotation,scale)
+Node(position,rotation,scale,a_parent)
 {
 	
 }
 
-Object::Object(const char * vertexPath, const char * fragmentPath, const Vector3 & position, const Vector3 & rotation):
+Object::Object(const char * vertexPath, const char * fragmentPath, const Vector3 & position, const Vector3 & rotation, Node* a_parent):
 	shader(vertexPath, fragmentPath),
-	transform(position, rotation)
+	Node(position, rotation,a_parent)
 {}
 
-Object::Object(const char * vertexPath, const char * fragmentPath, const Vector3 & position):
+Object::Object(const char * vertexPath, const char * fragmentPath, const Vector3 & position, Node* a_parent):
 	shader(vertexPath, fragmentPath),
-	transform(position)
+	Node(position,a_parent)
 {
 	
 }
@@ -28,7 +29,15 @@ Object::Object(const char * vertexPath, const char * fragmentPath, const Vector3
 void Object::Render(const Camera& camera)
 {
 	shader.use();
-	shader.setMat4("model", transform.modelMatrix);
+		SetWorldMatrix();
+	if(parent==nullptr)
+	{
+		shader.setMat4("model", transform.modelMatrix);
+	}
+	else
+	{
+		shader.setMat4("model", worldMatrix);
+	}
 	shader.setMat4("view", camera.viewMatrix);
 	shader.setMat4("projection", camera.projectionMatrix);
 	glBindVertexArray(VAO);

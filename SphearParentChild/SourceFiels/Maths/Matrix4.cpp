@@ -105,6 +105,10 @@ Vector4 operator*(const Matrix4 & mat1, const Vector4 & B)
 			vec4.arr[i] += mat1[i][j] * B.arr[j];
 		}
 	}
+	vec4.x=vec4.arr[0];
+	vec4.y = vec4.arr[1];
+	vec4.z = vec4.arr[2];
+	vec4.w = vec4.arr[3];
 
 	return vec4;
 }

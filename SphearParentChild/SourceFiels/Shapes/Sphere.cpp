@@ -1,8 +1,8 @@
 #include "..\..\Includes\Shapes\Sphere.h"
 
 #define PI 3.14
-Sphere::Sphere(const char * vertexPath, const char * fragmentPath, Vector3 position, float m_radius, int a_totalSections) :
-Object(vertexPath,fragmentPath,position),
+Sphere::Sphere(const char * vertexPath, const char * fragmentPath, Vector3 position, float m_radius, int a_totalSections, Node* a_parent) :
+Object(vertexPath,fragmentPath,position,a_parent),
 radius(m_radius),
 totalSections(a_totalSections)
 {

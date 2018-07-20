@@ -120,6 +120,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiels\3D\Camera.cpp" />
+    <ClCompile Include="SourceFiels\3D\Node.cpp" />
     <ClCompile Include="SourceFiels\3D\Object.cpp" />
     <ClCompile Include="SourceFiels\Maths\Matrix4.cpp" />
     <ClCompile Include="SourceFiels\Maths\Transform.cpp" />
@@ -133,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\3D\Camera.h" />
+    <ClInclude Include="Includes\3D\Node.h" />
     <ClInclude Include="Includes\3D\Object.h" />
     <ClInclude Include="Includes\Maths\Matrix4.h" />
     <ClInclude Include="Includes\Maths\Transform.h" />

@@ -37,7 +37,7 @@ Transform::Transform(const Vector3& a_position, const Vector3& a_rotation, const
 
 void Transform::Rotate(Vector3 axis, float angle)
 {
-	float radian=angle*(PI/180.0f);
+	const float radian=angle*(PI/180.0f);
 	float A00=cos(radian)+axis.x*axis.x*(1-cos(radian));
 	float A01=axis.y*axis.z*(1-cos(radian))+axis.z;
 	float A02=axis.z*axis.x*(1-cos(radian))-axis.y*sin(radian);
@@ -53,6 +53,22 @@ void Transform::Rotate(Vector3 axis, float angle)
 	float A22 = cos(radian) + axis.z*axis.z*(1 - cos(radian));
 	float A23=0;
 
+
+	//float A00 = cos(radian) + (position.x+axis.x)*(position.x+axis.x)*(1 - cos(radian));
+	//float A01 = (position.y+axis.y)*(position.z+axis.z)*(1 - cos(radian)) + (position.z + axis.z);
+	//float A02 = (position.z+axis.z)*(position.x + axis.x)*(1 - cos(radian)) - (position.y + axis.y)*sin(radian);
+	//float A03 = 0;
+
+	//float A10 = (position.x + axis.x)*(position.y + axis.y)*(1 - cos(radian)) - (position.z + axis.z)*sin(radian);
+	//float A11 = cos(radian) + (position.y + axis.y)*(position.y + axis.y)*(1 - cos(radian));
+	//float A12 = (position.z + axis.z)*(position.y + axis.y)*(1 - cos(radian)) + (position.x + axis.x)*sin(radian);
+	//float A13 = 0;
+
+	//float A20 = (position.x + axis.x)*(position.z + axis.z)*(1 - cos(radian)) + (position.y + axis.y)*sin(radian);
+	//float A21 = (position.y + axis.y)*(position.z + axis.z)*(1 - cos(radian)) - (position.x + axis.x)*sin(radian);
+	//float A22 = cos(radian) + (position.z + axis.z)*(position.z + axis.z)*(1 - cos(radian));
+	//float A23 = 0;
+
 	Matrix4 axisRotationMat{
 			Vector4(A00,A01,A02,A03),
 			Vector4(A10,A11,A12,A13),
@@ -61,6 +77,28 @@ void Transform::Rotate(Vector3 axis, float angle)
 		};
 
 	modelMatrix=modelMatrix*axisRotationMat;
+}
+
+void Transform::Translate(Vector3 targetPos)
+{
+	
+
+	const Matrix4 TranslationMat
+	{
+		Vector4(1,0,0,targetPos.x),
+		Vector4(0,1,0,targetPos.y),
+		Vector4(0,0,1,targetPos.z),
+		Vector4(0,0,0,1)
+	};
+
+	Vector4 target(position,1);
+
+	Vector4 pos=TranslationMat*target;
+	position.x=pos.x;
+	position.y = pos.y;
+	position.z = pos.z;
+
+	SetModelMatrix();
 }
 
 void Transform::SetModelMatrix()
@@ -115,3 +153,5 @@ void Transform::SetModelMatrix()
 	Matrix4 M3 = M2*Z_RotationMat;
 	modelMatrix =M3*TranslationMat ;
 }
+
+
