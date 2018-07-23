@@ -12,6 +12,6 @@ public:
 	Transform transform;
 	std::vector<Node*> childs;
 	Node* parent;
-	Matrix4 worldMatrix;
-	void SetWorldMatrix();
+	/*Matrix4 worldMatrix;
+	void SetWorldMatrix();*/
 };

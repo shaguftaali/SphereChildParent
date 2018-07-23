@@ -29,14 +29,14 @@ Object::Object(const char * vertexPath, const char * fragmentPath, const Vector3
 void Object::Render(const Camera& camera)
 {
 	shader.use();
-		SetWorldMatrix();
+		transform.SetWorldMatrix(parent);
 	if(parent==nullptr)
 	{
 		shader.setMat4("model", transform.modelMatrix);
 	}
 	else
 	{
-		shader.setMat4("model", worldMatrix);
+		shader.setMat4("model", transform.worldMatrix);
 	}
 	shader.setMat4("view", camera.viewMatrix);
 	shader.setMat4("projection", camera.projectionMatrix);

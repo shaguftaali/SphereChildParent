@@ -40,6 +40,21 @@ Matrix4::Matrix4(const Vector4 & v1, const Vector4 & v2, const Vector4 & v3, con
 
 }
 
+Matrix4 Matrix4::Transpose()
+{
+	Matrix4 mat4;
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			mat4[j][i]=mat[i][j];
+		}
+
+	}
+	return mat4;
+}
+
 float * Matrix4::operator[](int index)
 {
 	assert(index >= 0 && index<4 && "index out of bound");

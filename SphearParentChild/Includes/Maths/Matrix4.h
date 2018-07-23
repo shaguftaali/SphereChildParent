@@ -9,6 +9,8 @@ class Matrix4
 		Matrix4(const float arg[4][4]);
 		Matrix4(const Vector4& v1, const Vector4& v2, const Vector4& v3, const Vector4& v4 );
 
+	Matrix4 Transpose();
+
 	friend Matrix4 operator +(const Matrix4& mat1, const Matrix4& mat2);
 	friend Matrix4 operator -(const Matrix4& mat1, const Matrix4& mat2);
 	friend Matrix4 operator *(const Matrix4& mat1, const Matrix4& mat2);

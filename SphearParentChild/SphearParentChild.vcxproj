@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\GLFW\include;D:\Shagufta\Software\glew-2.1.0-win32\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\GLFW\include;D:\Shagufta\Software\glew-2.1.0-win32\glew-2.1.0\include;D:\Shagufta\OpenGL_Workspace\SphearParentChild\SphearParentChild\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>C:\Program Files (x86)\GLFW\lib\glfw3.lib;D:\Shagufta\Software\glew-2.1.0-win32\glew-2.1.0\lib\Release\Win32\glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -128,8 +128,10 @@
     <ClCompile Include="SourceFiels\Maths\Vector4.cpp" />
     <ClCompile Include="SourceFiels\Shader.cpp" />
     <ClCompile Include="SourceFiels\Shapes\Circle.cpp" />
+    <ClCompile Include="SourceFiels\Shapes\Cube.cpp" />
     <ClCompile Include="SourceFiels\Shapes\Grid.cpp" />
     <ClCompile Include="SourceFiels\Shapes\Sphere.cpp" />
+    <ClCompile Include="SourceFiels\Shapes\Torus.cpp" />
     <ClCompile Include="SourceFiels\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -142,8 +144,10 @@
     <ClInclude Include="Includes\Maths\Vector4.h" />
     <ClInclude Include="Includes\Shader.h" />
     <ClInclude Include="Includes\Shapes\Circle.h" />
+    <ClInclude Include="Includes\Shapes\Cube.h" />
     <ClInclude Include="Includes\Shapes\Grid.h" />
     <ClInclude Include="Includes\Shapes\Sphere.h" />
+    <ClInclude Include="Includes\Shapes\Torus.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\FragmentShader.fs" />

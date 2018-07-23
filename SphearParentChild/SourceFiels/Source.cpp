@@ -8,6 +8,8 @@
 #include "../Includes/Maths/Transform.h"
 #include "../Includes/Shapes/Sphere.h"
 #include "../Includes/Shapes/Circle.h"
+#include "Shapes/Cube.h"
+#include "Shapes/Torus.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -42,88 +44,11 @@ int main(int argc, char* argv[])
 	//Shader ourShader("D:/Shagufta/OpenGL_Workspace/BouncingBall/BouncingBall/Shader/LightVertexShader.vs", "D:/Shagufta/OpenGL_Workspace/BouncingBall/BouncingBall/Shader/LightFragmentShader.fs");
 	glEnable(GL_DEPTH_TEST);
 
-	float colorVertices[] = {
-		// front
-		-0.2, -0.1, -0.5,
-		0.1, -0.2, -0.35,
-		0.21,  0.23, -0.5,
-		-0.2,  0.2, -0.5,
+	
+	
+	
 
-		-0.2, -0.2,  0.5 ,
-		0.2, -0.2,  0.5 ,
-		0.2,  0.2,  0.5 ,
-		-0.2,  0.2,  0.5
-	};
-
-	float vertices[] = {
-		// front
-		-0.2, -0.2, -0.2,   0.0, 0.0, 1.0f,		   //(0)
-		 0.2, -0.2, -0.2,   0.0, 0.0, 1.0f,		   //(1)
-		 0.2,  0.2, -0.2,   0.0, 0.0, 1.0f,		   //(2)
-		-0.2,  0.2, -0.2,   0.0, 0.0, 1.0f,		   //(3)
-
-
-												   //back									   
-		-0.2,  -0.2,  0.2 ,  0.0, 0.0, -1.0f,	   //(4)
-		 0.2,  -0.2,  0.2 ,  0.0, 0.0, -1.0f,	   //(5)
-		 0.2,   0.2,  0.2 ,  0.0, 0.0, -1.0f,	   //(6)
-		-0.2,   0.2,  0.2,   0.0, 0.0, -1.0f,	   //(7)
-
-	  //left									   
-		-0.2, -0.2, -0.2,   1.0, 0.0, 0.0f,		   //(8)
-		-0.2,  -0.2, 0.2,   1.0, 0.0, 0.0f,		   //(9)
-		-0.2,   0.2, 0.2,	1.0, 0.0, 0.0f,		   //(10)
-		-0.2,  0.2, -0.2,	1.0, 0.0, 0.0f,		   //(11)
-
-	//right								   
-		 0.2,  -0.2, -0.2,  -1.0, 0.0, 0.0f,	   //(12)
-		 0.2,   0.2, -0.2,  -1.0, 0.0, 0.0f,	   //(13)
-		 0.2,   0.2,  0.2,  -1.0, 0.0, 0.0f,	   //(14)
-		 0.2,  -0.2,  0.2,  -1.0, 0.0, 0.0f,	   //(15)
-
-	  //top								   
-	    -0.2,  0.2, -0.2,  0.0, 1.0, 0.0f,		   //(16)
-	     0.2,  0.2, -0.2,  0.0, 1.0, 0.0f,		   //(17)
-	     0.2,  0.2,  0.2,  0.0, 1.0, 0.0f,		   //(18)
-	    -0.2,  0.2,  0.2,  0.0, 1.0, 0.0f,		   //(19)
-
-	// bottom
-	    -0.2, -0.2, -0.2,  0.0,-1.0, 0.0f,        //(20)
-	    -0.2, -0.2,  0.2,  0.0,-1.0, 0.0f,        //(21)
-	     0.2, -0.2,  0.2,  0.0,-1.0, 0.0f,        //(22)
-	     0.2, -0.2, -0.2,  0.0,-1.0, 0.0f,        //(23)
-	};
-
-	unsigned int indices[] = {
-		//front
-		0,1,2,
-		0,2,3,
-
-		//right face
-		12,14,13,
-		12,15,14,
-
-		//bottom face
-		20,21,22,
-		20,22,23,
-
-		//top face
-		16,17,18,
-		16,18,19,
-
-		//left face
-
-		8,10,9,
-		8,11,10,
-
-		//back face
-		4,6,5,
-		4,7,6
-
-	};
-
-
-	unsigned int VBO, VAO, EBO;
+	/*unsigned int VBO, VAO, EBO;
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
@@ -144,39 +69,25 @@ int main(int argc, char* argv[])
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	glBindVertexArray(0);
+	glBindVertexArray(0);*/
 
-	//Grid grid()
+	
+	
 
-	//Transform trans(Vector3(0, 0, 0),Vector3(0,0,0),Vector3(1,1,1));
-
-	Grid grid(20,
-			  "D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/VertexShader.vs",
-			  "D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/FragmentShader.fs",
-			  Vector3(0,0,0),
-			  nullptr
-			  );
-
-	/*Sphere sphere(
-		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/VertexShader.vs",
-		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/FragmentShader.fs",
-		Vector3(0,0,0),
-		10,
-		20
-	);*/
 
 	Sphere sphere(
 		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightVertexShader.vs",
 		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightFragmentShader.fs",
-		Vector3(-2, 0, 0),
+		Vector3(-15, 0, 0),
 		5,
 		30,
 		nullptr
 	);
+
 	Sphere sphere1(
 		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightVertexShader.vs",
 		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightFragmentShader.fs",
-		Vector3(6, 0, 0),
+		Vector3(10, 0, 0),
 		2,
 		30,
 		&sphere
@@ -191,22 +102,31 @@ int main(int argc, char* argv[])
 		&sphere1
 	);
 
-	//sphere.transform.Rotate(Vector3(1,0,0),90);
-	/*Circle circle(
-		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/VertexShader.vs",
-		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/FragmentShader.fs",
-		Vector3(0, 0, 0),
-		10,
-		24,
+
+	Cube cube(
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightVertexShader.vs",
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightFragmentShader.fs",
+		Vector3(6.5, 0, 0),
+		5,
 		nullptr
-	);*/
+	);
 
-
+	Torus torus(
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightVertexShader.vs",
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightFragmentShader.fs",
+		Vector3(6.5, 0, 0),
+		10,
+		5,
+		20,
+		20,
+		nullptr
+	);
 	
-
-	Vector3 v=grid.transform.position;
-	Camera camera(Vector3(0,0,-50), sphere.transform.position, 500, .005f, 60);
+	Camera camera(Vector3(0,0,-50), Vector3(0,0,0), 500, .005f, 60);
 	float angle=0;
+
+	//sphere.transform.Rotate(Vector3(0, 1, 0), 45);
+	//sphere.transform.Translate(Vector3(-15, 0, 0));
 	while (!glfwWindowShouldClose(window))
 	{
 		processInput(window);
@@ -214,19 +134,23 @@ int main(int argc, char* argv[])
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		//grid.Render(camera);
-		sphere.Render(camera);
+		/*sphere.Render(camera);
 		sphere1.Render(camera);
 		sphere2.Render(camera);
-		//sphere.transform.Rotate(Vector3(0, 1, 0), 0.2f);
-		sphere2.transform.Rotate(Vector3(0, 1, 0), 1);
-		//sphere1.transform.Translate(Vector3(0,cos(angle)*0.2f, 0));
-	//sphere2.transform.Translate(Vector3(0,sin(angle)*0.2f,0));
-		//circle.Render(camera);
+		sphere.transform.Rotate(Vector3(0, 1, 0), 1.f);
+		sphere1.transform.Rotate(Vector3(0, 1, 0), 1);
+	*/
+		//cube.Render(camera);
+		torus.Render(camera);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-	grid.DeleteDrawingData();
+
+	sphere.DeleteDrawingData();
+	sphere1.DeleteDrawingData();
+	sphere2.DeleteDrawingData();
+//	grid.DeleteDrawingData();
 
 	
 }

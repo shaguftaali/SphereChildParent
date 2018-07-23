@@ -16,7 +16,7 @@ totalSections(a_totalSections)
 void Sphere::Render(const Camera & camera)
 {
 	Object::Render(camera);
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	shader.setVec3("lightPos", 0.0f, 0.0f, 50.0f);
 	shader.setVec3("objectColor", 0.5f, 0.2f, 0.51f);
 	shader.setVec3("lightColor", 1.0f, 0.5f, 1.0f);
@@ -31,9 +31,9 @@ void Sphere::SetVertices()
 	float phi=0;
 	float theta=0;
 
-	Vector3 center=transform.position;
-	Vector3 topCenter=Vector3(center.x,center.y,center.z+radius);
-	Vector3 bottomCenter = Vector3(center.x, center.y, center.z-radius);
+	//Vector3 center=transform.position;
+	Vector3 topCenter=Vector3(0,0,+radius);
+	Vector3 bottomCenter = Vector3(0, 0,-radius);
 
 	vertices.push_back(topCenter.x);
 	vertices.push_back(topCenter.y);
@@ -45,9 +45,9 @@ void Sphere::SetVertices()
 		for (int j=0;j<totalSections;j++)
 		{
 			theta+=2*PI/totalSections;
-			float x=center.x+radius*sin(phi)*cos(theta);
-			float y=center.y+radius*sin(phi)*sin(theta);
-			float z=center.z+ radius*cos(phi);
+			float x=radius*sin(phi)*cos(theta);
+			float y=radius*sin(phi)*sin(theta);
+			float z=radius*cos(phi);
 			vertices.push_back(x);
 			vertices.push_back(y);
 			vertices.push_back(z);
@@ -159,21 +159,10 @@ void Sphere::SetDrawingData()
 
 	glBufferSubData(GL_ARRAY_BUFFER,0,sizeof(float)*(vertices.size()),&vertices[0]);
 	glBufferSubData(GL_ARRAY_BUFFER,sizeof(float)*(vertices.size()),sizeof(float)*(normal.size()),&normal[0]);
-	//glBufferSubData(GL_ARRAY_BUFFER,(sizeof(float)*vertices.size())+(sizeof(float)*normal.size()),)
-
-	//glBufferSubData(GL_ARRAY_BUFFER,0,sizeof(float)*(vertices.size()),&vertices[0]);
-	//glBufferSubData(GL_ARRAY_BUFFER, vertices.size(), sizeof(float)*normal.size(),&normal[0]);
-
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(float)*(vertices.size()), &vertices[0], GL_STATIC_DRAW);
+	
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int)*(indices.size()), &indices[0], GL_STATIC_DRAW);
-	
-	/*glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-	glEnableVertexAttribArray(0);
-	
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(float) * vertices.size()));
-	glEnableVertexAttribArray(1);*/
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 	glEnableVertexAttribArray(0);
