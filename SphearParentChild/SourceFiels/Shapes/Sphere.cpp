@@ -4,7 +4,8 @@
 Sphere::Sphere(const char * vertexPath, const char * fragmentPath, Vector3 position, float m_radius, int a_totalSections, Node* a_parent) :
 Object(vertexPath,fragmentPath,position,a_parent),
 radius(m_radius),
-totalSections(a_totalSections)
+totalSections(a_totalSections),
+m_boundingSphere(position,m_radius)
 {
 	
 	SetVertices();
@@ -22,6 +23,24 @@ void Sphere::Render(const Camera & camera)
 	shader.setVec3("lightColor", 1.0f, 0.5f, 1.0f);
 	
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+}
+
+BoundingSphere Sphere::GetBoundingSphere()
+{
+	return m_boundingSphere;
+}
+
+Sphere Sphere::Test()
+{
+	Sphere sphere(
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightVertexShader.vs",
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightFragmentShader.fs",
+		Vector3(0, 0, 0),
+		5,
+		30,
+		nullptr
+	);
+	return sphere;
 }
 
 

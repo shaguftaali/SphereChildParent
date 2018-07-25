@@ -45,7 +45,7 @@ Vector3 Vector3::Normalization()
 	return *this/Magnitude();
 }
 
-float Vector3::Magnitude()
+float Vector3::Magnitude() const
 {
 	return sqrtf(SqrMagnitude());
 }
@@ -55,7 +55,7 @@ float Vector3::Magnitude(const Vector3 & vec3)
 	return sqrtf(SqrMagnitude(vec3));
 }
 
-float Vector3::SqrMagnitude()
+float Vector3::SqrMagnitude() const
 {
 	return (x*x + y*y + z*z);
 }

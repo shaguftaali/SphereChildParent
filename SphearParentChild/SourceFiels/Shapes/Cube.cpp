@@ -21,6 +21,19 @@ void Cube::Render(const Camera & camera)
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 }
 
+Cube Cube::Test()
+{
+	Cube cube(
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightVertexShader.vs",
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightFragmentShader.fs",
+		Vector3(6.5, 0, 0),
+		5,
+		nullptr
+	);
+
+	return cube;
+}
+
 void Cube::SetVertices()
 {
 	float verticesArray[] = {

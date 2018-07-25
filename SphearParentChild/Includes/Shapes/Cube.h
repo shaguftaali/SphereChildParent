@@ -8,7 +8,7 @@ public:
 	Cube(const char * vertexPath, const char * fragmentPath, Vector3 position, float a_size, Node* a_parent);
 	//Sphere();
 	void Render(const Camera& camera) override;
-
+	static  Cube Test();
 private:
 
 	float size;

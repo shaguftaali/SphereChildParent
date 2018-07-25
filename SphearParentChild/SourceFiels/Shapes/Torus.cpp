@@ -27,6 +27,22 @@ void Torus::Render(const Camera & camera)
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 }
 
+Torus Torus::Test()
+{
+	Torus torus(
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightVertexShader.vs",
+		"D:/Shagufta/OpenGL_Workspace/SphearParentChild/SphearParentChild/Shaders/LightFragmentShader.fs",
+		Vector3(6.5, 0, 0),
+		10,
+		5,
+		20,
+		20,
+		nullptr
+	);
+
+	return torus;
+}
+
 void Torus::SetVertices()
 {
 	float theta=0 ;

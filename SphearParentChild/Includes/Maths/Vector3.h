@@ -22,6 +22,6 @@ public:
 	Vector3 Normalization();
 	static  float Magnitude(const Vector3& vec3);
 	static  float SqrMagnitude(const Vector3& vec3);
-	float Magnitude();
-	float SqrMagnitude();
+	float Magnitude() const;
+	float SqrMagnitude() const;
 };

@@ -2,22 +2,25 @@
 #include <vector>
 #include "../Maths/Vector3.h"
 #include "../3D/Object.h"
-
+#include "Physics/Collision/BoundingSphere.h"
 class Sphere :public Object
 {
 public:
 
 	Sphere(const char * vertexPath, const char * fragmentPath,Vector3 position,float m_radius,int a_totalSections,Node* a_parent);
-	//Sphere();
+	
 	void Render(const Camera& camera) override;
-	//std::vector<float> vertices;
+	BoundingSphere GetBoundingSphere();
+	static  Sphere Test();
+;
 private:
 
 	float radius;
 	int totalSections;
+	BoundingSphere m_boundingSphere;
 
 protected:
-	/*void SetVertices(Vector3 position,int totalSections) override;*/
+	
 	void SetVertices() override;
 	void SetIndices() override;
 	void SetDrawingData() override;
